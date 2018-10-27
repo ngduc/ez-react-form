@@ -26,6 +26,18 @@ const getClasses = (use: string) => {
   return defaults;
 };
 
+// check if array of options (select)
+const isOptionArray = (v) => {
+  if (Array.isArray(v)) {
+    for (let i = 0; i < v.length; i += 1) {
+      if (!v[i].hasOwnProperty('value')) {
+        return false // all array items must have "value"
+      }
+    }
+    return true // Note: empty array => true
+  }
+}
+
 function Checkbox(props: any) {
   return (
     <Field name={props.name}>
@@ -66,7 +78,6 @@ function Radio(props: any) {
               {...props}
               checked={field.value === props.value}
               onChange={() => {
-                console.log(222, field, props);
                 form.setFieldValue(props.name, props.value);
               }}
             />
@@ -102,6 +113,11 @@ const EzField = (props: any) => {
   const errorCss = css.error || props.errorCss || ''
   const errorClass = errorCss ? `${classes.error} ${errorCss}` : classes.error
 
+  let options = null
+  if (isOptionArray(props.options)) {
+    options = props.options.map((opt: any) => <option key={opt.value} value={opt.value}>{opt.label}</option>)
+  }
+
   const moreProps: any = {}
   if (props.select) {
     moreProps.component = 'select'
@@ -125,7 +141,7 @@ const EzField = (props: any) => {
             className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`}
             {...(typeof props.children !== 'string' ? props : {})}
             {...moreProps}
-          />
+          >{options}</FastField>
         </React.Fragment>
       )}
       {hasErrors && <span className={errorClass}>{errors[fieldName]}</span>}

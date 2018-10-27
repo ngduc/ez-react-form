@@ -4,9 +4,7 @@
 
 Easy React Form - ez-react-form - your pain ends here.
 
-*"Let it take care of the work so you don't have to"*
-
-- Live example: [Codesandbox](https://codesandbox.io/s/y7vwzp2091)
+- Live Demo: [Codesandbox](https://codesandbox.io/s/y7vwzp2091)
 
 ### 🌟 Features
 
@@ -17,30 +15,30 @@ Easy    Flexible    Consistent    Fast    Layouts    Themes    More Types
 ```
 
 Not just shorter syntax, it's also offering:
-- Consistent rendering, stylings (for big projects)
-- Layouts (vertical, horizontal)
+- Describe your Forms naturally.
+- Consistent rendering, stylings (good for big projects).
+- Layouts (vertical, horizontal).
 - Work with different CSS Frameworks / Form Layouts (tentcss (default), bootstrap, spectre, etc.)
 - More types of fields.
-- Work well with Formik - use FastField to avoid [too many re-renders] (https://twitter.com/jaredpalmer/status/962114095481851910?lang=en)
+- Work well together with Formik - use FastField to avoid [too many re-renders] (https://twitter.com/jaredpalmer/status/962114095481851910?lang=en)
 
 ### 📦 Usage
 
 ```JS
 $ npm install ez-react-form
-
 import { FormContainer, Form, Field, Button } from 'ez-react-form';
 
 <FormContainer onSubmit={this.onSubmit} render={props => (
   <Form use="bootstrap">
-    <Field>Email | email</Field>
-    <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
+    <Field>Email | Enter your email | email</Field>
+    <Field select options={animals}>Favorite Animal | animal</Field>
 
     <Button type="submit"/>
     <Button>Cancel</Button>
   </Form>
 )} />
 ```
-- To avoid conflicts, you can also `import { EzFormContainer, EzForm, EzField, EzButton }`
+- To avoid conflicts, you can also use `import { EzFormContainer, EzForm, EzField, EzButton }`
 - Full code example: [Link](src/EzFormExample.tsx)
 - Live example: [Codesandbox](https://codesandbox.io/s/y7vwzp2091)
 

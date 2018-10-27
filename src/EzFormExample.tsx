@@ -46,9 +46,7 @@ export default class extends React.Component {
       <label>Gender:</label>
       {genders.map(gender => <Field radio value={gender.value}>{gender.label} | gender</Field>)}
 
-      <Field select label="Favorite Animal" name="animal">
-        {animals.map(opt => <option value={opt.value}>{opt.label}</option>)}
-      </Field>
+      <Field select options={animals}>Favorite Animal | animal</Field>
       
       <label>Roles:</label>
       {roles.map(role => <Field checkbox value={role.value}>{role.label} | roles</Field>)}
