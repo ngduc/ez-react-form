@@ -20,7 +20,8 @@ Not just shorter syntax, it's also offering:
 - Layouts (vertical, horizontal).
 - Work with different CSS Frameworks / Form Layouts (tentcss (default), bootstrap, spectre, etc.)
 - More types of fields.
-- Work well together with Formik - use FastField to avoid [too many re-renders] (https://twitter.com/jaredpalmer/status/962114095481851910?lang=en)
+- Work well together with Formik - use FastField to avoid [too many re-renders](https://twitter.com/jaredpalmer/status/962114095481851910?lang=en)
+- Shorthand syntax `<Field>Label | Placeholder | name</Field>` (yes, child is a string for convenience, props work too but it's up to you) generates more code for you. (inspired by [Styled Component](https://github.com/styled-components/styled-components) literal string for CSS)
 
 ### 📦 Usage
 
