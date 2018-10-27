@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ngduc/ez-react-form.svg?branch=master)](https://travis-ci.org/ngduc/ez-react-form)
 
-React Easy Form - ez-react-form - your pain ends here.
+Easy React Form - ez-react-form - your pain ends here.
 
 *"Let it take care of the work so you don't have to"*
 
@@ -28,9 +28,9 @@ Not just shorter syntax, it's also offering:
 ```JS
 $ npm install ez-react-form
 
-import { EzFormContainer, Form, Field, Button } from 'ez-react-form'; // or: EzForm, EzField, EzButton
+import { FormContainer, Form, Field, Button } from 'ez-react-form';
 
-<EzFormContainer onSubmit={this.onSubmit} render={props => (
+<FormContainer onSubmit={this.onSubmit} render={props => (
   <Form use="bootstrap">
     <Field>Email | email</Field>
     <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
@@ -40,6 +40,7 @@ import { EzFormContainer, Form, Field, Button } from 'ez-react-form'; // or: EzF
   </Form>
 )} />
 ```
+- To avoid conflicts, you can also `import { EzFormContainer, EzForm, EzField, EzButton }`
 - Full code example: [Link](src/EzFormExample.tsx)
 - Live example: [Codesandbox](https://codesandbox.io/s/y7vwzp2091)
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as Yup from 'yup';
 import DisplayFormState from './DisplayFormState';
 
-import EzFormContainer from './EzFormContainer'
+import FormContainer from './EzFormContainer'
 import Form from './EzForm';
 import Field from './EzField';
 import Button from './EzButton';
@@ -82,7 +82,7 @@ export default class extends React.Component {
   render() {
     return (
       <div>
-        <EzFormContainer
+        <FormContainer
           initialValues={{ email: 'example@email.com', roles: ['USER'], gender: '' }}
           validationSchema={schema}
           onSubmit={this.onSubmit}
@@ -91,7 +91,7 @@ export default class extends React.Component {
 
         <hr />
         <h3>Horizontal Form</h3>
-        <EzFormContainer
+        <FormContainer
           initialValues={{}}
           validationSchema={schema}
           onSubmit={this.onSubmit}
