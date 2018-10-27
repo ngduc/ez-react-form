@@ -16,7 +16,7 @@ beforeAll(async () => {
   await page.waitForSelector('.form-group');
 });
 
-describe('ez-form', () => {
+describe('ez-react-form', () => {
   test('should render all fields', async () => {
     const fields = await page.$$('.form-group');
     expect(fields).toHaveLength(10);

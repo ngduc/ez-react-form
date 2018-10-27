@@ -11,7 +11,7 @@ class Demo extends Component {
   render() {
     return (
       <div style={{ width: '70%' }}>
-        <h1>ez-form</h1>
+        <h1>ez-react-form</h1>
         <EzFormExample />
       </div>
     );

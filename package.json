@@ -1,7 +1,7 @@
 {
-  "name": "ez-form",
-  "version": "0.2.1",
-  "description": "React Easy Form - ez-form - your pain ends here",
+  "name": "ez-react-form",
+  "version": "0.2.2",
+  "description": "React Easy Form - ez-react-form - your pain ends here",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://ngduc@github.com/ngduc/ez-form.git"
+    "url": "git+https://ngduc@github.com/ngduc/ez-react-form.git"
   },
   "keywords": [
     "react",
@@ -37,9 +37,9 @@
   "author": "Duc Nguyen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ngduc/ez-form/issues"
+    "url": "https://github.com/ngduc/ez-react-form/issues"
   },
-  "homepage": "https://github.com/ngduc/ez-form#readme",
+  "homepage": "https://github.com/ngduc/ez-react-form#readme",
   "dependencies": {
     "classnames": "^2.2.6",
     "dotenv": "^6.1.0",
