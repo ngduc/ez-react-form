@@ -1,3 +1,20 @@
+import * as React from 'react';
+
+export const animals = [
+  { value: '', label: 'Select an animal'},
+  { value: 'TIGER', label: 'Tiger'},
+  { value: 'BEAR', label: 'Bear'}
+]
+export const genders = [
+  { value: '', label: 'N/A'},
+  { value: 'MALE', label: 'Male'},
+  { value: 'FEMALE', label: 'Female'}
+]
+export const roles = [
+  { value: 'ADMIN', label: 'Admin'},
+  { value: 'USER', label: 'User'}
+]
+
 export const getChildrenParts = (props: any) => {
   let children = props.children
   const isJSXString = Array.isArray(props.children) && children.join('').indexOf('|') >= 0
@@ -16,3 +33,18 @@ export const getChildrenParts = (props: any) => {
   const { label, placeholder, name } = props
   return { label, placeholder, fieldName: name }
 }
+
+export const DisplayFormState = (props: any) => (
+  <div style={{ margin: '1rem 0' }}>
+    <h3 style={{ fontFamily: 'monospace' }} />
+    <pre
+      style={{
+        background: '#f6f8fa',
+        fontSize: '.65rem',
+        padding: '.5rem'
+      }}
+    >
+      <strong>values</strong> = {JSON.stringify(props.values, null, 2)}
+    </pre>
+  </div>
+);

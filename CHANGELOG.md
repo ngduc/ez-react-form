@@ -1,4 +1,4 @@
-## [0.2.4] - 2018-10-26
+## [0.2.5] - 2018-10-28
 
 ### Added
 - Checkbox, Radio, Select types.

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Yup from 'yup';
-import DisplayFormState from './DisplayFormState';
+import { animals, genders, roles, DisplayFormState } from './Utils'
 
 import FormContainer from './EzFormContainer'
 import Form from './EzForm';
@@ -8,24 +8,10 @@ import Field from './EzField';
 import Button from './EzButton';
 
 const schema = Yup.object().shape({
-  email: Yup.string().required('Email is required!'),
-  dob: Yup.string().required('Birthday is required!')
+  email: Yup.string().required('Email is required!').email('Invalid Email!'),
+  dob: Yup.date().required('Birthday is required!'),
+  animals: Yup.array()
 });
-
-const animals = [
-  { value: '', label: 'Select an animal'},
-  { value: 'TIGER', label: 'Tiger'},
-  { value: 'BEAR', label: 'Bear'}
-]
-const genders = [
-  { value: '', label: 'N/A'},
-  { value: 'MALE', label: 'Male'},
-  { value: 'FEMALE', label: 'Female'}
-]
-const roles = [
-  { value: 'ADMIN', label: 'Admin'},
-  { value: 'USER', label: 'User'}
-]
 
 export default class extends React.Component {
   state: any = {};
