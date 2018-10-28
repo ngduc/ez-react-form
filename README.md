@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ngduc/ez-react-form.svg?branch=master)](https://travis-ci.org/ngduc/ez-react-form)
 
-Easy React Form - ez-react-form - your pain ends here.
+Easy React Form - ez-react-form
 
 - Live Demo: [Codesandbox](https://codesandbox.io/s/y7vwzp2091)
 
@@ -10,18 +10,15 @@ Easy React Form - ez-react-form - your pain ends here.
 
 [![Screenshot](screenshot-compare.png)](src/EzFormExample.tsx)
 
-```
-Easy    Flexible    Consistent    Fast    Layouts    Themes    More Types
-```
+- Shorthand syntax `<Field>Label | Placeholder | name</Field>` (yes, child is a string for convenience, props work too but it's up to you) generates more code for you. (inspired by [Styled Component](https://github.com/styled-components/styled-components) literal string for CSS)
 
 Not just shorter syntax, it's also offering:
-- Describe your Forms naturally.
+- Describe Forms naturally.
 - Consistent rendering, stylings (good for big projects).
 - Layouts (vertical, horizontal).
 - Work with different CSS Frameworks / Form Layouts (tentcss (default), bootstrap, spectre, etc.)
 - More types of fields.
 - Work well together with Formik - use FastField to avoid [too many re-renders](https://twitter.com/jaredpalmer/status/962114095481851910?lang=en)
-- Shorthand syntax `<Field>Label | Placeholder | name</Field>` (yes, child is a string for convenience, props work too but it's up to you) generates more code for you. (inspired by [Styled Component](https://github.com/styled-components/styled-components) literal string for CSS)
 
 ### 📦 Usage
 
