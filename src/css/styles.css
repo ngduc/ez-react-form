@@ -12,6 +12,16 @@
   width: 100%;
 }
 
+.ez-field-full {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.ez-field-full label {
+  margin-right: 10px;
+}
+
 .ez-field-error {
   border: 1px solid #d40000;
 }

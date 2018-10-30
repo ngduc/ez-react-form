@@ -10,7 +10,7 @@ import Button from './EzButton';
 const schema = Yup.object().shape({
   email: Yup.string().required('Email is required!').email('Invalid Email!'),
   dob: Yup.date().required('Birthday is required!'),
-  animals: Yup.array()
+  roles: Yup.array().required('Role is required!')
 });
 
 export default class extends React.Component {
@@ -28,14 +28,9 @@ export default class extends React.Component {
     <Form use="spectre">
       <Field>Email | email</Field>
       <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
-
-      <label>Gender:</label>
-      {genders.map(gender => <Field radio value={gender.value}>{gender.label} | gender</Field>)}
-
+      <Field radios options={genders}>Gender | gender</Field>
       <Field select options={animals}>Favorite Animal | animal</Field>
-      
-      <label>Roles:</label>
-      {roles.map(role => <Field checkbox value={role.value}>{role.label} | roles</Field>)}
+      <Field checkboxes options={roles}>Role(s) | roles</Field>
 
       <Button type="submit" disabled={props.isSubmitting} />
       <Button gap={10} disabled>Cancel</Button>
@@ -67,7 +62,7 @@ export default class extends React.Component {
     return (
       <div>
         <FormContainer
-          initialValues={{ email: 'example@email.com', roles: ['USER'], gender: '' }}
+          initialValues={{ email: 'example@email.com', roles: [], gender: '' }}
           validationSchema={schema}
           onSubmit={this.onSubmit}
           render={this.renderForm}

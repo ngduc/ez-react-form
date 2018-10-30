@@ -1,3 +1,9 @@
+## [0.3.0] - 2018-10-30
+
+### Added
+- more field types: Radios, Checkboxes
+- updated example
+
 ## [0.2.5] - 2018-10-28
 
 ### Added

@@ -128,6 +128,28 @@ const EzField = (props: any) => {
         <Checkbox label={label} name={fieldName} value={props.value} />
       ) : props.radio ? (
         <Radio label={label} name={fieldName} value={props.value} />
+      ) : (props.radios && props.options) ? (
+        <React.Fragment>
+          <label htmlFor={fieldName} className={labelClass}>
+            {label}
+          </label>
+          <div className={`ez-field-full ${hasErrors ? classes.invalidControl : ''}`}>
+            {props.options.map((opt: any) => (
+              <Radio key={opt.value} label={opt.label} name={fieldName} value={opt.value} />
+            ))}
+          </div>
+        </React.Fragment>
+      ) : (props.checkboxes && props.options) ? (
+        <React.Fragment>
+          <label htmlFor={fieldName} className={labelClass}>
+            {label}
+          </label>
+          <div className={`ez-field-full ${hasErrors ? classes.invalidControl : ''}`}>
+            {props.options.map((opt: any) => (
+              <Checkbox key={opt.value} label={opt.label} name={fieldName} value={opt.value} />
+            ))}
+          </div>
+        </React.Fragment>
       ) : (
         <React.Fragment>
           <label htmlFor={fieldName} className={labelClass}>
