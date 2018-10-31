@@ -22,7 +22,9 @@
     "test:watch": "NODE_ENV=test HEADLESS=true jest --config=./jest-config.js --verbose --watchAll",
     "start-test-ui": "nwb react run ./__tests__/ui/index.js --port 3003",
     "test:coverage": "nwb test-react --coverage",
-    "demo": "nwb react run demo/src/index.js"
+    "demo": "nwb react run demo/src/index.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -50,11 +52,18 @@
     "react": "16.x"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^4.0.0",
+    "@storybook/addon-links": "^4.0.0",
+    "@storybook/addons": "^4.0.0",
+    "@storybook/react": "^4.0.0",
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.9",
     "@types/yup": "^0.26.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-jest": "^23.6.0",
+    "babel-loader": "^7.0.4",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "concurrently": "^4.0.1",
     "enzyme": "^3.7.0",

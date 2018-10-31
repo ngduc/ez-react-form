@@ -2,7 +2,7 @@ import EzFormContainer from './EzFormContainer';
 import EzForm from './EzForm';
 import EzField from './EzField';
 import EzButton from './EzButton';
-import EzFormExample from './EzFormExample';
+import EzFormExample from './examples/EzFormExample';
 import DynamicFormExample from './examples/DynamicFormExample';
 
 module.exports = {

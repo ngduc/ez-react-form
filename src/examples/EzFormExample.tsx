@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as Yup from 'yup';
-import { animals, genders, roles, DisplayFormState } from './Utils'
+import { animals, genders, roles, DisplayFormState } from '../Utils'
 
-import FormContainer from './EzFormContainer'
-import Form from './EzForm';
-import Field from './EzField';
-import Button from './EzButton';
+import FormContainer from '../EzFormContainer'
+import Form from '../EzForm';
+import Field from '../EzField';
+import Button from '../EzButton';
 
 const schema = Yup.object().shape({
   email: Yup.string().required('Email is required!').email('Invalid Email!'),

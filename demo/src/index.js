@@ -5,7 +5,7 @@ import './styles.css';
 // import '../../lib/css/bootstrap4.css';
 import '../../lib/css/spectre.css';
 import '../../lib/css/styles.css'; // default Theme
-import { EzFormExample } from '../../lib';
+import { EzFormExample } from '../../lib/examples';
 
 class Demo extends Component {
   render() {

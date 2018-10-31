@@ -1,6 +1,8 @@
-## [0.3.0] - 2018-10-30
+## [0.3.5] - 2018-10-30
 
 ### Added
+- storybook
+- dynamic form example
 - more field types: Radios, Checkboxes
 - updated example
 
