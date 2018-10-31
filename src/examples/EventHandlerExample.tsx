@@ -57,7 +57,7 @@ export default class extends React.Component {
   render() {
     return (
       <div>
-        <div>onChange, onSubmit:</div>
+        <strong>console log for: onChange, onSubmit:</strong>
         <FormContainer
           initialValues={{ email: 'example@email.com', roles: [], gender: '' }}
           validationSchema={schema}

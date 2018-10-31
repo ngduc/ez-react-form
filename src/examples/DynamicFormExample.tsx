@@ -51,7 +51,7 @@ export default class extends React.Component {
   render() {
     return (
       <div>
-        <div>Select Radio button to render a child form for each option:</div>
+        <strong>Select Radio button to render a child form for each option:</strong>
         <FormContainer
           initialValues={{ email: 'example@email.com', roles: [], gender: '' }}
           validationSchema={schema}
