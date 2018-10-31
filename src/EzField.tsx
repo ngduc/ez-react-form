@@ -34,17 +34,20 @@ function Checkbox(props: any) {
           <input
             type="checkbox"
             {...props}
-            checked={field.value.includes(props.value)}
+            checked={field.value && field.value.includes(props.value)}
             onChange={() => {
+              let nextValue
+              field.value = field.value || []
               if (field.value.includes(props.value)) {
-                const nextValue = field.value.filter(
+                nextValue = field.value.filter(
                   (value: any) => value !== props.value
                 );
                 form.setFieldValue(props.name, nextValue);
               } else {
-                const nextValue = field.value.concat(props.value);
+                nextValue = field.value.concat(props.value);
                 form.setFieldValue(props.name, nextValue);
               }
+              props.onChange && props.onChange(nextValue);
             }}
           />
           &nbsp;
@@ -67,9 +70,7 @@ function Radio(props: any) {
               checked={field.value === props.value}
               onChange={() => {
                 form.setFieldValue(props.name, props.value);
-                if (props.onChange) {
-                  props.onChange(props.value);
-                }
+                props.onChange && props.onChange(props.value);
               }}
             />
             &nbsp;
@@ -119,9 +120,9 @@ const EzField = (props: any) => {
   return (
     <div className={classes.group}>
       {props.checkbox ? (
-        <Checkbox label={label} name={fieldName} value={props.value} />
+        <Checkbox label={label} name={fieldName} value={props.value} onChange={props.onChange} />
       ) : props.radio ? (
-        <Radio label={label} name={fieldName} value={props.value} />
+        <Radio label={label} name={fieldName} value={props.value} onChange={props.onChange} />
       ) : (props.radios && props.options) ? (
         <React.Fragment>
           <Label />
@@ -136,7 +137,7 @@ const EzField = (props: any) => {
           <Label />
           <div className={`ez-field-full ${hasErrors ? classes.invalidControl : ''}`}>
             {props.options.map((opt: any) => (
-              <Checkbox key={opt.value} label={opt.label} name={fieldName} value={opt.value} />
+              <Checkbox key={opt.value} label={opt.label} name={fieldName} value={opt.value} onChange={props.onChange} />
             ))}
           </div>
         </React.Fragment>
@@ -146,7 +147,7 @@ const EzField = (props: any) => {
           <FastField
             name={fieldName}
             placeholder={placeholder}
-            onChange={props.formik.handleChange}
+            onChange={(val: any) => { props.formik.handleChange(val); props.onChange && props.onChange(val); }}
             validate={props.validate}
             className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`}
             {...(typeof props.children !== 'string' ? props : {})}
