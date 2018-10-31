@@ -68,3 +68,12 @@ export const isOptionArray = (v: any) => {
   }
   return false
 }
+
+// delete multiple properties from data
+export function deleteProperties(data: any, properties: string[]) {
+  for (let i = 0; i < properties.length; i += 1) {
+    if (data.hasOwnProperty(properties[i])) {
+      delete data[properties[i]]
+    }
+  }
+}

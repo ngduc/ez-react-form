@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as Yup from 'yup';
-import { DisplayFormState } from '../Utils'
-// import { genders } from './Utils'
+import { DisplayFormState, deleteProperties } from '../Utils'
 
 import FormContainer from '../EzFormContainer'
 import Form from '../EzForm';
@@ -22,9 +21,7 @@ export default class extends React.Component {
   onSubmit = (values: any, { setSubmitting }: any) => {
     setTimeout(() => {
       alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
     }, 800);
-    setSubmitting(true);
   }
 
   renderForm = (props: any) => {
@@ -32,20 +29,19 @@ export default class extends React.Component {
     return (
       <Form use="spectre">
         <Field>Email | email</Field>
-        <Field radios options={genders} onChange={() => this.onGenderChange(props)}>Gender | gender</Field>
+        <Field radios options={genders} onChange={() => this.onChangeGender(props)}>Gender | gender</Field>
 
         {gender === 'MALE' && <Field>Wife Name | wifeName</Field>}
         {gender === 'FEMALE' && <Field>Husband Name | husbandName</Field>}
   
-        <Button type="submit" disabled={props.isSubmitting} />
+        <Button type="submit" />
         <DisplayFormState {...props} />
       </Form>
     )
   }
 
-  onGenderChange = (props: any) => {
-    delete props.values.husbandName
-    delete props.values.wifeName
+  onChangeGender = (props: any) => {
+    deleteProperties(props.values, ['husbandName', 'wifeName']); // clean up form data
   }
 
   render() {
