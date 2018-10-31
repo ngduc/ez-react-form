@@ -15,6 +15,13 @@ export const roles = [
   { value: 'USER', label: 'User'}
 ]
 
+// similar to Storybook "action()"
+export function log (name: string) {
+  return function (val: any) {
+    console.log(name, val);
+  }
+}
+
 export const getChildrenParts = (props: any) => {
   let children = props.children
   const isJSXString = Array.isArray(props.children) && children.join('').indexOf('|') >= 0

@@ -6,8 +6,8 @@ import { storiesOf } from '@storybook/react';
 
 import '../lib/css/spectre.css';
 import '../lib/css/styles.css'; // default Theme
-import { EzFormExample, DynamicFormExample } from '../lib';
+import { BasicExample, DynamicFormExample } from '../lib';
 
-storiesOf('ez-react-form', module)
-  .add('Basic', () => <EzFormExample />)
+storiesOf('Basic', module)
+  .add('Basic', () => <BasicExample />)
   .add('Dynamic Form', () => <DynamicFormExample />);

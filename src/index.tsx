@@ -2,8 +2,9 @@ import EzFormContainer from './EzFormContainer';
 import EzForm from './EzForm';
 import EzField from './EzField';
 import EzButton from './EzButton';
-import EzFormExample from './examples/EzFormExample';
+import BasicExample from './examples/BasicExample';
 import DynamicFormExample from './examples/DynamicFormExample';
+import EventHandlerExample from './examples/EventHandlerExample';
 
 module.exports = {
   FormContainer: EzFormContainer,
@@ -14,6 +15,7 @@ module.exports = {
   EzForm,
   EzField,
   EzButton,
-  EzFormExample,
-  DynamicFormExample
+  BasicExample,
+  DynamicFormExample,
+  EventHandlerExample
 };
