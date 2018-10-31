@@ -48,3 +48,16 @@ export const DisplayFormState = (props: any) => (
     </pre>
   </div>
 );
+
+// check if variable is an array of options (for select)
+export const isOptionArray = (v: any) => {
+  if (Array.isArray(v)) {
+    for (let i = 0; i < v.length; i += 1) {
+      if (!v[i].hasOwnProperty('value')) {
+        return false // all array items must have "value"
+      }
+    }
+    return true // Note: empty array => also true
+  }
+  return false
+}

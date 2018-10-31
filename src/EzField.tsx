@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect, Field, FastField } from 'formik';
-import { getChildrenParts } from './Utils'
+import { getChildrenParts, isOptionArray } from './Utils'
 
 const getClasses = (use: string) => {
   const defaults = {
@@ -26,22 +26,10 @@ const getClasses = (use: string) => {
   return defaults;
 };
 
-// check if array of options (select)
-const isOptionArray = (v) => {
-  if (Array.isArray(v)) {
-    for (let i = 0; i < v.length; i += 1) {
-      if (!v[i].hasOwnProperty('value')) {
-        return false // all array items must have "value"
-      }
-    }
-    return true // Note: empty array => true
-  }
-}
-
 function Checkbox(props: any) {
   return (
     <Field name={props.name}>
-      {({ field, form }) => (
+      {({ field, form } : { field: any, form: any }) => (
         <label>
           <input
             type="checkbox"
@@ -70,7 +58,7 @@ function Checkbox(props: any) {
 function Radio(props: any) {
   return (
     <Field name={props.name}>
-      {({ field, form }) => {
+      {({ field, form } : { field: any, form: any }) => {
         return (
           <label>
             <input
@@ -79,6 +67,9 @@ function Radio(props: any) {
               checked={field.value === props.value}
               onChange={() => {
                 form.setFieldValue(props.name, props.value);
+                if (props.onChange) {
+                  props.onChange(props.value);
+                }
               }}
             />
             &nbsp;
@@ -117,6 +108,9 @@ const EzField = (props: any) => {
   if (isOptionArray(props.options)) {
     options = props.options.map((opt: any) => <option key={opt.value} value={opt.value}>{opt.label}</option>)
   }
+  const Label = () => <label htmlFor={fieldName} className={labelClass}>
+    {label}
+  </label>
 
   const moreProps: any = {}
   if (props.select) {
@@ -130,20 +124,16 @@ const EzField = (props: any) => {
         <Radio label={label} name={fieldName} value={props.value} />
       ) : (props.radios && props.options) ? (
         <React.Fragment>
-          <label htmlFor={fieldName} className={labelClass}>
-            {label}
-          </label>
+          <Label />
           <div className={`ez-field-full ${hasErrors ? classes.invalidControl : ''}`}>
             {props.options.map((opt: any) => (
-              <Radio key={opt.value} label={opt.label} name={fieldName} value={opt.value} />
+              <Radio key={opt.value} label={opt.label} name={fieldName} value={opt.value} onChange={props.onChange} />
             ))}
           </div>
         </React.Fragment>
       ) : (props.checkboxes && props.options) ? (
         <React.Fragment>
-          <label htmlFor={fieldName} className={labelClass}>
-            {label}
-          </label>
+          <Label />
           <div className={`ez-field-full ${hasErrors ? classes.invalidControl : ''}`}>
             {props.options.map((opt: any) => (
               <Checkbox key={opt.value} label={opt.label} name={fieldName} value={opt.value} />
@@ -152,9 +142,7 @@ const EzField = (props: any) => {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <label htmlFor={fieldName} className={labelClass}>
-            {label}
-          </label>
+          <Label />
           <FastField
             name={fieldName}
             placeholder={placeholder}
