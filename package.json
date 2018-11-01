@@ -64,7 +64,7 @@
     "@types/yup": "^0.26.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-jest": "^23.6.0",
-    "babel-loader": "^7.0.4",
+    "babel-loader": "^8.0.4",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "concurrently": "^4.0.1",
     "enzyme": "^3.7.0",
