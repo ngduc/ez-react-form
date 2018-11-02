@@ -29,6 +29,11 @@ const getClasses = (use: string, isHorizontal: boolean) => {
     defaults.invalidControl = 'is-error';
     defaults.error = 'form-input-hint';
   }
+  if (use === 'semanticui2') {
+    defaults.group = isHorizontal ? 'field inline' : 'field';
+    defaults.file = 'ez-field ez-semanticui2-file';
+    defaults.toggle = 'ez-semanticui2-toggle';
+  }
   return defaults;
 };
 

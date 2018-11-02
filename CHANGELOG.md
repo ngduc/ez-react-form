@@ -1,9 +1,10 @@
-## [0.6.1] - 2018-11-01
+## [0.6.5] - 2018-11-01
 
 ### Added
 - more field types: textarea, number, password, file, date, time, range
 - Toggle & inline toggle
 - FieldTypeExample
+- Semantic UI 2
 
 ### Changed
 - BREAKING: renamed "bootstrap" to "bootstrap4"

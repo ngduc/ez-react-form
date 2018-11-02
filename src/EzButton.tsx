@@ -4,16 +4,24 @@ import { pickHTMLProps } from 'pick-react-known-prop';
 
 const getClasses = (use: string) => {
   const defaults = {
+    button: 'ez-btn ez-btn--filled',
     primary: 'ez-btn ez-btn--filled ez-btn--primary ez-submit',
     secondary: 'ez-btn ez-btn--filled'
   };
   if (use === 'bootstrap3' || use === 'bootstrap4') {
+    defaults.button = 'btn';
     defaults.primary = 'btn btn-primary';
     defaults.secondary = 'btn btn-secondary';
   }
   if (use === 'spectre') {
+    defaults.button = 'btn';
     defaults.primary = 'btn btn-primary';
     defaults.secondary = 'btn btn-secondary';
+  }
+  if (use === 'semanticui2') {
+    defaults.button = 'ui button';
+    defaults.primary = 'ui primary button';
+    defaults.secondary = 'ui secondary button';
   }
   return defaults;
 };
@@ -43,8 +51,16 @@ const EzButton = (props: any) => {
     style.marginRight = props.rightGap;
   }
   const htmlProps = pickHTMLProps(props)
+
+  let className = classes.button
+  if (isSubmit || props.primary) {
+    className = classes.primary
+  }
+  if (props.secondary) {
+    className = classes.secondary
+  }
   return (
-    <button type={type} className={`${isSubmit ? classes.primary : classes.secondary}`} style={style} {...htmlProps}>
+    <button type={type} className={className} style={style} {...htmlProps}>
       {text}
     </button>
   );

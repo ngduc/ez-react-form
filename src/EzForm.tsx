@@ -18,6 +18,9 @@ const getClasses = (use: string) => {
     defaults.label = 'col-3 col-sm-12'
     defaults.control = 'col-9 col-sm-12'
   }
+  if (use === 'semanticui2') {
+    defaults.form = 'ui form';
+  }
   return defaults;
 };
 

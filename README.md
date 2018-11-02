@@ -40,15 +40,15 @@ Result: (Full form, validation (with yup) & error messages)
 [![Screenshot](screenshot-types.png)](https://codesandbox.io/s/l5vxk5o7vq)
 
 - Shorthand syntax `<Field>Label | Placeholder | name</Field>` (yes, child is a string for convenience, props work too if you prefer that). Inspired by [Styled Component](https://github.com/styled-components/styled-components) literal string for CSS.
-- Render different form layouts: Bootstrap4, Spectre and more.
-- Compatible with formik. This is built on top of formik and can be used together with it (for custom fields, etc.)
+- Render different `form layouts`: Bootstrap 4, Semantic UI, Spectre and more.
+- Compatible with `formik`. This is built on top of formik and can be used together with it (for custom fields, etc.)
 
 ### 📖 Documentation
 
 [Change Log](/CHANGELOG.md)
 
-TODO:
-- Support: Material, Semantic UI and more.
+#### TODO:
+- Support more form layouts: Material, etc.
 - More field types: Date Range, etc.
 - (File a PR to request any feature, field type, etc.)
 

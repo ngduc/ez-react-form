@@ -5,6 +5,7 @@ import './styles.css';
 // import '../../lib/css/bootstrap3.css';
 import '../../lib/css/bootstrap4.css';
 // import '../../lib/css/spectre.css';
+// import '../../lib/css/semanticui2.css';
 import '../../lib/css/styles.css'; // default Theme
 import { BasicExample, DynamicFormExample, EventHandlerExample, FieldTypeExample } from '../../lib';
 
