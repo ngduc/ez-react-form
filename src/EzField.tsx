@@ -82,6 +82,21 @@ function Radio(props: any) {
   );
 }
 
+function FileUpload(props: any) {
+  return (
+    <Field name={props.name}>
+      {({ field, form } : { field: any, form: any }) => {
+        return (
+          <input id="file" name="file" type="file" onChange={(event) => {
+            form.setFieldValue("file", event.currentTarget.files[0]);
+            props.onChange && props.onChange(event.currentTarget.files[0]);
+          }} className="form-control" />
+        )
+      }}
+    </Field>
+  )
+}
+
 const EzField = (props: any) => {
   if (!props.children) {
     throw 'EzField is being used incorrectly: missing props.children';
@@ -114,12 +129,26 @@ const EzField = (props: any) => {
   </label>
 
   const moreProps: any = {}
+  if (props.textarea) {
+    moreProps.component = 'textarea'
+  }
   if (props.select) {
     moreProps.component = 'select'
   }
+  if (props.number) {
+    moreProps.type = 'number'
+  }
+  if (props.password) {
+    moreProps.type = 'password'
+  }
+  if (props.date) {
+    moreProps.type = 'date'
+  }
   return (
     <div className={classes.group}>
-      {props.checkbox ? (
+      {props.file ? (
+        <FileUpload label={label} name={fieldName} value={props.value} onChange={props.onChange} />
+      ) : props.checkbox ? (
         <Checkbox label={label} name={fieldName} value={props.value} onChange={props.onChange} />
       ) : props.radio ? (
         <Radio label={label} name={fieldName} value={props.value} onChange={props.onChange} />

@@ -1,6 +1,6 @@
 {
   "name": "ez-react-form",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "Easy React Form - ez-react-form - your pain ends here",
   "main": "lib/index.js",
   "module": "es/index.js",

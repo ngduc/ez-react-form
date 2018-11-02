@@ -49,6 +49,11 @@ Result:
 
 [Change Log](/CHANGELOG.md)
 
+TODO:
+- Support: Material, Semantic UI.
+- More field types: Toggler, Slider, Date Range, etc.
+- (File a PR to request any feature, field type, etc.)
+
 ### 🙌 Thanks
 
 All contributions are welcome!
