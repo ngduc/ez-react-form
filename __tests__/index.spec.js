@@ -19,7 +19,7 @@ beforeAll(async () => {
 describe('ez-react-form', () => {
   test('should render all fields', async () => {
     const fields = await page.$$('.form-group');
-    expect(fields).toHaveLength(5);
+    expect(fields).toHaveLength(7);
   });
 
   test('should have fields with 100% width', async () => {
