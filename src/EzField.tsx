@@ -82,15 +82,53 @@ function Radio(props: any) {
   );
 }
 
+interface IThumb {
+  file: any
+}
+class Thumb extends React.Component<IThumb> {
+  state = {
+    loading: false,
+    thumb: undefined,
+  };
+
+  componentWillReceiveProps(nextProps: any) {
+    if (!nextProps.file) { return; }
+
+    this.setState({ loading: true }, () => {
+      let reader = new FileReader();
+
+      reader.onloadend = () => {
+        this.setState({ loading: false, thumb: reader.result });
+      };
+
+      reader.readAsDataURL(nextProps.file);
+    });
+  }
+
+  render() {
+    const file = this.props.file;
+    const { loading, thumb } = this.state;
+
+    if (!file) { return null; }
+
+    // if (loading) { return <p>loading...</p>; } // this causes flickering when changing other fields.
+
+    return (<img src={thumb} alt={file.name} className="ez-thumb" />);
+  }
+}
+
 function FileUpload(props: any) {
   return (
     <Field name={props.name}>
       {({ field, form } : { field: any, form: any }) => {
         return (
-          <input id="file" name="file" type="file" onChange={(event) => {
-            form.setFieldValue("file", event.currentTarget.files[0]);
-            props.onChange && props.onChange(event.currentTarget.files[0]);
-          }} className="form-control" />
+          <React.Fragment>
+            <input id={props.id || props.name} name={props.name} type="file" className={props.className || ''} onChange={(event) => {
+              form.setFieldValue(props.name, event.currentTarget.files[0]);
+              props.onChange && props.onChange(event.currentTarget.files[0]);
+            }} />
+            {props.withPreview && <Thumb file={form.values[props.name]} />}
+          </React.Fragment>
         )
       }}
     </Field>
@@ -147,7 +185,11 @@ const EzField = (props: any) => {
   return (
     <div className={classes.group}>
       {props.file ? (
-        <FileUpload label={label} name={fieldName} value={props.value} onChange={props.onChange} />
+        <React.Fragment>
+          <Label />
+          <FileUpload label={label} name={fieldName} value={props.value} onChange={props.onChange}
+            withPreview={props.withPreview} className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`} />
+        </React.Fragment>
       ) : props.checkbox ? (
         <Checkbox label={label} name={fieldName} value={props.value} onChange={props.onChange} />
       ) : props.radio ? (

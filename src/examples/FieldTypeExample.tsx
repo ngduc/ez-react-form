@@ -33,7 +33,8 @@ export default class extends React.Component {
         <Field checkboxes options={roles}>Checkboxes | checkboxes</Field>
         <Field number>Number | number</Field>
         <Field date>Date | date</Field>
-        <Field file>File Upload | file</Field>
+        <Field file>File Upload | file1</Field>
+        <Field file withPreview>File Upload (with Preview) | file2</Field>
 
         <Button type="submit" />
         <Button gap={10}>Button</Button>

@@ -31,6 +31,10 @@
   font-size: 0.8rem;
 }
 
+.ez-thumb {
+  height: 200px;
+}
+
 .ez-submit {
   margin-top: 5px;
 }
