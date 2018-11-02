@@ -51,7 +51,7 @@ Result:
 
 TODO:
 - Support: Material, Semantic UI.
-- More field types: Toggler, Slider, Date Range, etc.
+- More field types: Date Range, etc.
 - (File a PR to request any feature, field type, etc.)
 
 ### 🙌 Thanks
