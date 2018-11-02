@@ -31,8 +31,9 @@ describe('ez-react-form', () => {
       const el = document.querySelector('[name="dob"]');
       return JSON.parse(JSON.stringify(getComputedStyle(el)));
     });
-    expect(emailStyles.width).toContain('173px'); // 100% of view width
-    expect(dobStyles.width).toContain('173px'); // 100% of view width
+    // await page.waitFor(4000);
+    expect(emailStyles.width).toContain('800px'); // 100% of view width
+    expect(dobStyles.width).toContain('800px'); // 100% of view width
   });
 
   test('should show error on blur', async () => {

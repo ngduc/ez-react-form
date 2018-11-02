@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import '../../lib/css/spectre.css';
+import '../../lib/css/bootstrap4.css';
 import '../../lib/css/styles.css';
 import { BasicExample } from '../../lib';
 
