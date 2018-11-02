@@ -24,7 +24,7 @@ export default class extends React.Component {
 
   renderForm = (props: any) => {
     return (
-      <Form use="spectre">
+      <Form use="bootstrap">
         <Field>Text Field | text</Field>
         <Field password>Password | password</Field>
         <Field textarea>Textarea | textarea</Field>
@@ -34,6 +34,7 @@ export default class extends React.Component {
         <Field number>Number | number</Field>
         <Field date>Date | date</Field>
         <Field time>Time | time</Field>
+        <Field toggle inline>Toggle | toggle</Field>
         <Field file>File Upload | file1</Field>
         <Field file withPreview>File Upload (with Preview) | file2</Field>
         <Field range>Range | range</Field>
@@ -50,7 +51,7 @@ export default class extends React.Component {
       <div>
         <strong>Examples: All Field Types</strong>
         <FormContainer
-          initialValues={{ password: 'password', number: 3.14 }}
+          initialValues={{ password: 'password', number: 3.14, toggle: true }}
           validationSchema={schema}
           onSubmit={this.onSubmit}
           render={this.renderForm}

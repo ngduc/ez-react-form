@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect, Field, FastField } from 'formik';
+import Toggle from 'react-toggle';
 import { getChildrenParts, isOptionArray } from './Utils'
 
 const getClasses = (use: string) => {
@@ -7,12 +8,14 @@ const getClasses = (use: string) => {
     group: '',
     label: 'ez-label',
     control: 'ez-field',
+    toggle: 'ez-toggle',
     invalidControl: 'ez-field-error',
     error: 'ez-error'
   };
   if (use === 'bootstrap') {
     defaults.group = 'form-group';
     defaults.control = 'form-control';
+    defaults.toggle = 'ez-bootstrap-toggle'; // custom css for bootstrap
     defaults.invalidControl = 'is-invalid';
     defaults.error = 'invalid-feedback';
   }
@@ -20,6 +23,7 @@ const getClasses = (use: string) => {
     defaults.group = 'form-group';
     defaults.label = 'form-label';
     defaults.control = 'form-input';
+    // defaults.toggle = 'ez-spectre-toggle'; // no need yet
     defaults.invalidControl = 'is-error';
     defaults.error = 'form-input-hint';
   }
@@ -82,13 +86,35 @@ function Radio(props: any) {
   );
 }
 
+function EzToggle(props: any) {
+  return (
+    <Field name={props.name}>
+      {({ field, form } : { field: any, form: any }) => {
+        const formVal = form.values[props.name] // field value form formik.values
+        const checked = typeof formVal !== 'undefined' ? formVal : false
+        return (
+          <Toggle
+            icons={false}
+            {...props}
+            checked={checked}
+            onChange={(e: any) => {
+              form.setFieldValue(props.name, e.target.checked);
+              props.onChange && props.onChange(e.target.checked);
+            }}
+          />
+        )
+      }}
+    </Field>
+  );
+}
+
 interface IThumb {
   file: any
 }
 class Thumb extends React.Component<IThumb> {
   state = {
     loading: false,
-    thumb: undefined,
+    thumb: undefined
   };
 
   componentWillReceiveProps(nextProps: any) {
@@ -155,6 +181,9 @@ const EzField = (props: any) => {
   const controlCss = css.control || props.controlCss || ''
   const controlClass = controlCss ? `${classes.control} ${controlCss}` : classes.control
 
+  const toggleCss = css.toggle || props.toggleCss || ''
+  const toggleClass = toggleCss ? `${classes.toggle} ${toggleCss}` : classes.toggle
+
   const errorCss = css.error || props.errorCss || ''
   const errorClass = errorCss ? `${classes.error} ${errorCss}` : classes.error
 
@@ -190,7 +219,13 @@ const EzField = (props: any) => {
   }
   return (
     <div className={classes.group}>
-      {props.file ? (
+      {props.toggle ? (
+        <React.Fragment>
+          <Label />
+          <EzToggle name={fieldName} value={props.value} onChange={props.onChange}
+            className={props.inline ? `${toggleClass}-inline` : toggleClass} />
+        </React.Fragment>
+      ) : props.file ? (
         <React.Fragment>
           <Label />
           <FileUpload label={label} name={fieldName} value={props.value} onChange={props.onChange}

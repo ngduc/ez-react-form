@@ -19,7 +19,7 @@ beforeAll(async () => {
 describe('ez-react-form', () => {
   test('should render all fields', async () => {
     const fields = await page.$$('.form-group');
-    expect(fields).toHaveLength(7);
+    expect(fields).toHaveLength(5);
   });
 
   test('should have fields with 100% width', async () => {
@@ -31,8 +31,8 @@ describe('ez-react-form', () => {
       const el = document.querySelector('[name="dob"]');
       return JSON.parse(JSON.stringify(getComputedStyle(el)));
     });
-    expect(emailStyles.width).toContain('800px'); // 100% of view width
-    expect(dobStyles.width).toContain('800px'); // 100% of view width
+    expect(emailStyles.width).toContain('173px'); // 100% of view width
+    expect(dobStyles.width).toContain('173px'); // 100% of view width
   });
 
   test('should show error on blur', async () => {
@@ -40,7 +40,7 @@ describe('ez-react-form', () => {
     dob.focus(); // this trigger email field "blur" => should show: email required error
     const email = await page.$('[name="email"]');
     email.focus();
-    const emailError = await page.$$('.form-input-hint'); // spectre error class
+    const emailError = await page.$$('.invalid-feedback'); // bootstrap error class
     expect(emailError).toHaveLength(1);
   });
 

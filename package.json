@@ -1,6 +1,6 @@
 {
   "name": "ez-react-form",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Easy React Form - ez-react-form - your pain ends here",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -46,7 +46,8 @@
     "classnames": "^2.2.6",
     "dotenv": "^6.1.0",
     "formik": "^1.3.1",
-    "pick-react-known-prop": "^0.1.5"
+    "pick-react-known-prop": "^0.1.5",
+    "react-toggle": "^4.0.2"
   },
   "peerDependencies": {
     "react": "16.x"

@@ -25,7 +25,7 @@ export default class extends React.Component {
   }
 
   renderForm = (props: any) => (
-    <Form use="spectre">
+    <Form use="bootstrap">
       <Field>Email | email</Field>
       <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
       <Field radios options={genders}>Gender | gender</Field>
@@ -68,6 +68,7 @@ export default class extends React.Component {
           render={this.renderForm}
         />
 
+        {/* --- only work with "spectre" framework for now:
         <hr />
         <h3>Horizontal Form</h3>
         <FormContainer
@@ -75,7 +76,7 @@ export default class extends React.Component {
           validationSchema={schema}
           onSubmit={this.onSubmit}
           render={this.renderHorizontalForm}
-        />
+        /> */}
       </div>
     );
   }
