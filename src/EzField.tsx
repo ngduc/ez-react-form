@@ -182,6 +182,12 @@ const EzField = (props: any) => {
   if (props.date) {
     moreProps.type = 'date'
   }
+  if (props.time) {
+    moreProps.type = 'time'
+  }
+  if (props.range) {
+    moreProps.type = 'range'
+  }
   return (
     <div className={classes.group}>
       {props.file ? (
