@@ -24,7 +24,7 @@ export default class extends React.Component {
 
   renderForm = (props: any) => {
     return (
-      <Form use="bootstrap">
+      <Form use="bootstrap4">
         <Field>Text Field | text</Field>
         <Field password>Password | password</Field>
         <Field textarea>Textarea | textarea</Field>

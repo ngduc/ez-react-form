@@ -22,6 +22,13 @@ export function log (name: string) {
   }
 }
 
+export function clone (obj: any) {
+  if (!obj) {
+    return null
+  }
+  return JSON.parse(JSON.stringify(obj));
+}
+
 export const getChildrenParts = (props: any) => {
   let children = props.children
   const isJSXString = Array.isArray(props.children) && children.join('').indexOf('|') >= 0

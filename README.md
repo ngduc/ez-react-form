@@ -27,7 +27,7 @@ $ npm install ez-react-form
 import { FormContainer, Form, Field, Button } from 'ez-react-form';
 
 <FormContainer onSubmit={this.onSubmit} render={props => (
-  <Form use="bootstrap">
+  <Form use="bootstrap4">
     <Field>Email | Enter your email | email</Field>
     <Field radios options={genders}>Gender | gender</Field>
     <Field select options={animals}>Favorite Animal | animal</Field>

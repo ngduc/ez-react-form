@@ -25,7 +25,7 @@ export default class extends React.Component {
   }
 
   renderForm = (props: any) => (
-    <Form use="bootstrap">
+    <Form use="bootstrap4">
       <Field>Email | email</Field>
       <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
       <Field radios options={genders}>Gender | gender</Field>
@@ -41,12 +41,10 @@ export default class extends React.Component {
 
   renderHorizontalForm = (props: any) => {
     const css = {
-      label: 'col-3 col-sm-12',
-      control: 'col-9 col-sm-12',
       error: 'left25pct'
     }
     return (
-      <Form use="spectre" css={css}>
+      <Form use="bootstrap4" horizontal css={css}>
         <Field>Email | email</Field>
         <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
 
@@ -68,7 +66,6 @@ export default class extends React.Component {
           render={this.renderForm}
         />
 
-        {/* --- only work with "spectre" framework for now:
         <hr />
         <h3>Horizontal Form</h3>
         <FormContainer
@@ -76,7 +73,7 @@ export default class extends React.Component {
           validationSchema={schema}
           onSubmit={this.onSubmit}
           render={this.renderHorizontalForm}
-        /> */}
+        />
       </div>
     );
   }

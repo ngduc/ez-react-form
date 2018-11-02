@@ -27,7 +27,7 @@ export default class extends React.Component {
   renderForm = (props: any) => {
     const gender = props.values.gender
     return (
-      <Form use="bootstrap">
+      <Form use="bootstrap4">
         <Field>Email | email</Field>
         <Field radios options={genders} onChange={() => this.onChangeGender(props)}>Gender | gender</Field>
 

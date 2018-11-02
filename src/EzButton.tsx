@@ -7,7 +7,7 @@ const getClasses = (use: string) => {
     primary: 'ez-btn ez-btn--filled ez-btn--primary ez-submit',
     secondary: 'ez-btn ez-btn--filled'
   };
-  if (use === 'bootstrap') {
+  if (use === 'bootstrap3' || use === 'bootstrap4') {
     defaults.primary = 'btn btn-primary';
     defaults.secondary = 'btn btn-secondary';
   }

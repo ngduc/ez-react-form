@@ -3,18 +3,20 @@ import { connect, Field, FastField } from 'formik';
 import Toggle from 'react-toggle';
 import { getChildrenParts, isOptionArray } from './Utils'
 
-const getClasses = (use: string) => {
+const getClasses = (use: string, isHorizontal: boolean) => {
   const defaults = {
     group: '',
     label: 'ez-label',
     control: 'ez-field',
+    file: 'ez-field',
     toggle: 'ez-toggle',
     invalidControl: 'ez-field-error',
     error: 'ez-error'
   };
-  if (use === 'bootstrap') {
-    defaults.group = 'form-group';
+  if (use === 'bootstrap3' || use === 'bootstrap4') {
+    defaults.group = 'form-group' + (isHorizontal ? ' row' : '');
     defaults.control = 'form-control';
+    defaults.file = 'ez-field ez-bootstrap-file';
     defaults.toggle = 'ez-bootstrap-toggle'; // custom css for bootstrap
     defaults.invalidControl = 'is-invalid';
     defaults.error = 'invalid-feedback';
@@ -173,7 +175,7 @@ const EzField = (props: any) => {
     props.formik.errors.hasOwnProperty(fieldName) &&
     (props.formik.touched.hasOwnProperty(fieldName) || props.formik.submitCount > 0);
 
-  const classes = getClasses(props.formik.ezUse);
+  const classes = getClasses(props.formik.ezUse, props.formik.ezHorizontal);
   const css = props.formik.ezCss || {}
   const labelCss = css.label || props.labelCss || ''
   const labelClass = labelCss ? `${classes.label} ${labelCss}` : classes.label
@@ -183,6 +185,9 @@ const EzField = (props: any) => {
 
   const toggleCss = css.toggle || props.toggleCss || ''
   const toggleClass = toggleCss ? `${classes.toggle} ${toggleCss}` : classes.toggle
+
+  const fileCss = css.file || props.fileCss || ''
+  const fileClass = fileCss ? `${classes.toggle} ${fileCss}` : classes.file
 
   const errorCss = css.error || props.errorCss || ''
   const errorClass = errorCss ? `${classes.error} ${errorCss}` : classes.error
@@ -229,7 +234,7 @@ const EzField = (props: any) => {
         <React.Fragment>
           <Label />
           <FileUpload label={label} name={fieldName} value={props.value} onChange={props.onChange}
-            withPreview={props.withPreview} className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`} />
+            withPreview={props.withPreview} className={`${fileClass} ${hasErrors ? classes.invalidControl : ''}`} />
         </React.Fragment>
       ) : props.checkbox ? (
         <Checkbox label={label} name={fieldName} value={props.value} onChange={props.onChange} />
