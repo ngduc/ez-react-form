@@ -26,11 +26,11 @@ export default class extends React.Component {
 
   renderForm = (props: any) => (
     <Form use="bootstrap4">
-      <Field>Email | email</Field>
-      <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
-      <Field radios options={genders}>Gender | gender</Field>
-      <Field select options={animals}>Favorite Animal | animal</Field>
-      <Field checkboxes options={roles}>Role(s) | roles</Field>
+      <Field name="email" />
+      <Field label="Birthday" placeholder="Date of birth (mm/dd/yyyy)" name="dob" />
+      <Field radios options={genders} name="gender" />
+      <Field select options={animals} name="animal" />
+      <Field checkboxes options={roles} name="roles" />
 
       <Button type="submit" disabled={props.isSubmitting} />
       <Button gap={10} disabled>Cancel</Button>

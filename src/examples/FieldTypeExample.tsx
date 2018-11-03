@@ -25,19 +25,19 @@ export default class extends React.Component {
   renderForm = (props: any) => {
     return (
       <Form use="bootstrap4">
-        <Field>Text Field | text</Field>
-        <Field password>Password | password</Field>
-        <Field textarea>Textarea | textarea</Field>
-        <Field select options={animals}>Select | select</Field>
-        <Field radios options={genders}>Radios | radio</Field>
-        <Field checkboxes options={roles}>Checkboxes | checkboxes</Field>
-        <Field number>Number | number</Field>
-        <Field date>Date | date</Field>
-        <Field time>Time | time</Field>
-        <Field toggle inline>Toggle | toggle</Field>
-        <Field file>File Upload | file1</Field>
-        <Field file withPreview>File Upload (with Preview) | file2</Field>
-        <Field range>Range | range</Field>
+        <Field label="Text" name="text" />
+        <Field password name="password" />
+        <Field textarea name="textarea" />
+        <Field select options={animals} name="select" />
+        <Field radios options={genders} name="radio" />
+        <Field checkboxes options={roles} name="checkboxes" />
+        <Field number name="number" />
+        <Field date name="date" />
+        <Field time name="time" />
+        <Field toggle inline name="toggle" />
+        <Field file label="File Upload" name="file1" />
+        <Field file withPreview label="File Upload (with Preview)" name="file2" />
+        <Field range name="range" />
 
         <Button type="submit" />
         <Button gap={10}>Button</Button>
