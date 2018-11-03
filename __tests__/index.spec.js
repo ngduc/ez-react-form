@@ -28,7 +28,7 @@ describe('ez-react-form', () => {
       return JSON.parse(JSON.stringify(getComputedStyle(el)));
     });
     const dobStyles = await page.evaluate(() => {
-      const el = document.querySelector('[name="dob"]');
+      const el = document.querySelector('[name="birthday"]');
       return JSON.parse(JSON.stringify(getComputedStyle(el)));
     });
     // await page.waitFor(4000);
@@ -37,8 +37,8 @@ describe('ez-react-form', () => {
   });
 
   test('should show error on blur', async () => {
-    const dob = await page.$('[name="dob"]');
-    dob.focus(); // this trigger email field "blur" => should show: email required error
+    const birthday = await page.$('[name="birthday"]');
+    birthday.focus(); // this trigger email field "blur" => should show: email required error
     const email = await page.$('[name="email"]');
     email.focus();
     const emailError = await page.$$('.invalid-feedback'); // bootstrap error class
