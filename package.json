@@ -1,6 +1,6 @@
 {
   "name": "ez-react-form",
-  "version": "0.6.9",
+  "version": "0.6.10",
   "description": "A simple way to work with Forms in React",
   "main": "lib/index.js",
   "module": "es/index.js",
