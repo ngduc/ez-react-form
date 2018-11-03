@@ -58,6 +58,17 @@
   top: 6px;
 }
 
+.ez-semanticui2-file {
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+.ez-semanticui2-toggle {
+  margin: 0;
+}
+
+.ez-semanticui2-toggle-inline {}
+
 .ez-submit {
   margin-top: 5px;
 }

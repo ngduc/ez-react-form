@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect, Field, FastField } from 'formik';
 import Toggle from 'react-toggle';
-import { getChildrenParts, isOptionArray } from './Utils'
+import { getChildrenParts, isOptionArray, toPascalCase } from './Utils'
 
 const getClasses = (use: string, isHorizontal: boolean) => {
   const defaults = {
@@ -28,6 +28,11 @@ const getClasses = (use: string, isHorizontal: boolean) => {
     // defaults.toggle = 'ez-spectre-toggle'; // no need yet
     defaults.invalidControl = 'is-error';
     defaults.error = 'form-input-hint';
+  }
+  if (use === 'semanticui2') {
+    defaults.group = isHorizontal ? 'field inline' : 'field';
+    defaults.file = 'ez-field ez-semanticui2-file';
+    defaults.toggle = 'ez-semanticui2-toggle';
   }
   return defaults;
 };
@@ -163,12 +168,43 @@ function FileUpload(props: any) {
   )
 }
 
-const EzField = (props: any) => {
-  if (!props.children) {
-    throw 'EzField is being used incorrectly: missing props.children';
-    return null;
-  }
+interface EzFieldProps {
+  controlCss?: any
+  labelCss?: any
+  toggleCss?: any
+  fileCss?: any
+  errorCss?: any
+  label?: string|any // TODO: use correct type string|JSX
+  placeholder?: string
+  name?: string
+  // --- field types:
+  password?: string|boolean
+  number?: string|boolean
+  date?: string|boolean
+  time?: string|boolean
+  range?: string|boolean
+  radio?: string|boolean
+  radios?: string|boolean
+  checkbox?: string|boolean
+  checkboxes?: string|boolean
+  select?: string|boolean
+  options?: any[]
+  toggle?: string|boolean
+  inline?: string|boolean
+  textarea?: string|boolean
+  file?: string|boolean
+  withPreview?: string|boolean
+  // --- handlers:
+  value?: any
+  onChange?: (val: any) => void
+  validate?: any // TODO: use correct type
+  children?: any
+  formik?: any
+}
+
+const EzField = (props: EzFieldProps) => {
   const { label, placeholder, fieldName } = getChildrenParts(props)
+  const labelText = label || toPascalCase(fieldName);
 
   const errors = props.formik.errors;
   const hasErrors =
@@ -197,8 +233,15 @@ const EzField = (props: any) => {
     options = props.options.map((opt: any) => <option key={opt.value} value={opt.value}>{opt.label}</option>)
   }
   const Label = () => <label htmlFor={fieldName} className={labelClass}>
-    {label}
+    {labelText}
   </label>
+
+  const commonProps: any = {
+    label: labelText,
+    name: fieldName,
+    value: props.value,
+    onChange: props.onChange
+  }
 
   const moreProps: any = {}
   if (props.textarea) {
@@ -207,39 +250,28 @@ const EzField = (props: any) => {
   if (props.select) {
     moreProps.component = 'select'
   }
-  if (props.number) {
-    moreProps.type = 'number'
-  }
-  if (props.password) {
-    moreProps.type = 'password'
-  }
-  if (props.date) {
-    moreProps.type = 'date'
-  }
-  if (props.time) {
-    moreProps.type = 'time'
-  }
-  if (props.range) {
-    moreProps.type = 'range'
-  }
+  ['number', 'password', 'date', 'time', 'range'].map(type => {
+    if (props.hasOwnProperty(type)) {
+      moreProps.type = type; // HTML5 input types
+    }
+  })
   return (
     <div className={classes.group}>
       {props.toggle ? (
         <React.Fragment>
           <Label />
-          <EzToggle name={fieldName} value={props.value} onChange={props.onChange}
-            className={props.inline ? `${toggleClass}-inline` : toggleClass} />
+          <EzToggle {...commonProps} className={props.inline ? `${toggleClass}-inline` : toggleClass} />
         </React.Fragment>
       ) : props.file ? (
         <React.Fragment>
           <Label />
-          <FileUpload label={label} name={fieldName} value={props.value} onChange={props.onChange}
+          <FileUpload {...commonProps}
             withPreview={props.withPreview} className={`${fileClass} ${hasErrors ? classes.invalidControl : ''}`} />
         </React.Fragment>
       ) : props.checkbox ? (
-        <Checkbox label={label} name={fieldName} value={props.value} onChange={props.onChange} />
+        <Checkbox {...commonProps} />
       ) : props.radio ? (
-        <Radio label={label} name={fieldName} value={props.value} onChange={props.onChange} />
+        <Radio {...commonProps} />
       ) : (props.radios && props.options) ? (
         <React.Fragment>
           <Label />

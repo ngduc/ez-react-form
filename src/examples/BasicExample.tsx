@@ -9,7 +9,7 @@ import Button from '../EzButton';
 
 const schema = Yup.object().shape({
   email: Yup.string().required('Email is required!').email('Invalid Email!'),
-  dob: Yup.date().required('Birthday is required!'),
+  birthday: Yup.date().required('Birthday is required!'),
   roles: Yup.array().required('Role is required!')
 });
 
@@ -26,11 +26,11 @@ export default class extends React.Component {
 
   renderForm = (props: any) => (
     <Form use="bootstrap4">
-      <Field>Email | email</Field>
-      <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
-      <Field radios options={genders}>Gender | gender</Field>
-      <Field select options={animals}>Favorite Animal | animal</Field>
-      <Field checkboxes options={roles}>Role(s) | roles</Field>
+      <Field name="email" />
+      <Field placeholder="Date of birth (mm/dd/yyyy)" name="birthday" />
+      <Field radios options={genders} name="gender" />
+      <Field select options={animals} name="animal" />
+      <Field checkboxes options={roles} name="roles" />
 
       <Button type="submit" disabled={props.isSubmitting} />
       <Button gap={10} disabled>Cancel</Button>
@@ -45,8 +45,8 @@ export default class extends React.Component {
     }
     return (
       <Form use="bootstrap4" horizontal css={css}>
-        <Field>Email | email</Field>
-        <Field>Birthday | Date of birth (mm/dd/yyyy) | dob</Field>
+        <Field name="email" />
+        <Field placeholder="Date of birth (mm/dd/yyyy)" name="birthday" />
 
         <Button leftGap={'25%'} type="submit" disabled={props.isSubmitting} />
         <Button gap={10} disabled>Cancel</Button>

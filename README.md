@@ -2,25 +2,12 @@
 
 [![Build Status](https://travis-ci.org/ngduc/ez-react-form.svg?branch=master)](https://travis-ci.org/ngduc/ez-react-form)
 
-Easy React Form - ez-react-form
+A simple way to work with Forms in React.
 
 - Live Demo: [Codesandbox](https://codesandbox.io/s/l5vxk5o7vq)
+- Code examples: [Link](../src/examples)
 
 ### 🌟 Features
-
-[![Screenshot](screenshot-compare.png)](src/EzFormExample.tsx)
-
-- Shorthand syntax `<Field>Label | Placeholder | name</Field>` (yes, child is a string for convenience, props work too but it's up to you) generates more code for you. (inspired by [Styled Component](https://github.com/styled-components/styled-components) literal string for CSS)
-
-Not just shorter syntax, it's also offering:
-- Describe Forms naturally.
-- Consistent rendering, stylings (good for big projects).
-- Layouts (vertical, horizontal).
-- Work with different CSS Frameworks / Form Layouts (tentcss (default), bootstrap, spectre, etc.)
-- More types of fields.
-- Work well together with Formik - use FastField to avoid [too many re-renders](https://twitter.com/jaredpalmer/status/962114095481851910?lang=en)
-
-### 📦 Usage
 
 ```JS
 $ npm install ez-react-form
@@ -28,29 +15,41 @@ import { FormContainer, Form, Field, Button } from 'ez-react-form';
 
 <FormContainer onSubmit={this.onSubmit} render={props => (
   <Form use="bootstrap4">
-    <Field>Email | Enter your email | email</Field>
-    <Field radios options={genders}>Gender | gender</Field>
-    <Field select options={animals}>Favorite Animal | animal</Field>
+    <Field label="Text" name="text" />
+    <Field name="password" />
+    <Field textarea name="textarea" />
+    <Field select options={animals} name="select" />
+    <Field radios options={genders} name="radio" />
+    <Field checkboxes options={roles} name="checkboxes" />
+    <Field number name="number" />
+    <Field date name="date" />
+    <Field time name="time" />
+    <Field toggle inline name="toggle" />
+    <Field file label="File Upload" name="file1" />
+    <Field file withPreview label="File Upload (with Preview)" name="file2" />
+    <Field range name="range" />
 
     <Button type="submit"/>
     <Button>Cancel</Button>
   </Form>
 )} />
 ```
-- To avoid conflicts, you can also use `import { EzFormContainer, EzForm, EzField, EzButton }`
-- Full code example: [Link](src/EzFormExample.tsx)
-- Live example: [Codesandbox](https://codesandbox.io/s/l5vxk5o7vq)
 
-Result:
+Result: (Full form, validation (with yup) & error messages)
 
-[![Screenshot](screenshot.png)](src/EzFormExample.tsx)
+[![Screenshot](screenshot-types.png)](https://codesandbox.io/s/l5vxk5o7vq)
+
+- Render different `form layouts`: Bootstrap 4, Semantic UI, Spectre and more. (including horizontal layout)
+- Compatible with `formik`. This is built on top of formik and can be used together with it (for custom fields, etc.)
+- Support popular and advanced field types.
+- Works well on mobile screens.
 
 ### 📖 Documentation
 
 [Change Log](/CHANGELOG.md)
 
-TODO:
-- Support: Material, Semantic UI.
+#### TODO:
+- Support more form layouts: Material, etc.
 - More field types: Date Range, etc.
 - (File a PR to request any feature, field type, etc.)
 

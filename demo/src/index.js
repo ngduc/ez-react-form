@@ -5,6 +5,7 @@ import './styles.css';
 // import '../../lib/css/bootstrap3.css';
 import '../../lib/css/bootstrap4.css';
 // import '../../lib/css/spectre.css';
+// import '../../lib/css/semanticui2.css';
 import '../../lib/css/styles.css'; // default Theme
 import { BasicExample, DynamicFormExample, EventHandlerExample, FieldTypeExample } from '../../lib';
 
@@ -16,7 +17,7 @@ const Views = {
 };
 
 class Demo extends Component {
-  state = { view: 'BasicExample' };
+  state = { view: 'FieldTypeExample' };
 
   show = ev => {
     this.setState({ view: ev.target.dataset.name });
@@ -26,7 +27,7 @@ class Demo extends Component {
     const View = Views[this.state.view];
     return (
       <div style={{ width: '70%' }}>
-        <h1>ez-react-form</h1>
+        <h1>Demo</h1>
 
         <nav>
           {Object.keys(Views).map(v => {
