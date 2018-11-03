@@ -26,15 +26,22 @@ const getClasses = (use: string) => {
   return defaults;
 };
 
-// interface IProps {
-//   type?: string;
-//   submit?: any;
-//   gap?: number;
-//   formik: any; // FormikContext<{}>
-//   children?: any;
-// }
+interface IEzButtonProps {
+  type?: string,
+  primary?: string|boolean,
+  secondary?: string|boolean,
+  submit?: any,
+  // --- styles
+  className?: string,
+  gap?: string|number,
+  leftGap?: string|number,
+  rightGap?: string|number,
+  disabled?: string|boolean,
+  children?: any,
+  formik?: any; // FormikContext<{}>
+}
 
-const EzButton = (props: any) => {
+const EzButton = (props: IEzButtonProps) => {
   const classes = getClasses(props.formik.ezUse);
   const isSubmit = props.submit || props.type === 'submit';
   const type = isSubmit ? 'submit' : 'button';
@@ -60,7 +67,7 @@ const EzButton = (props: any) => {
     className = classes.secondary
   }
   return (
-    <button type={type} className={className} style={style} {...htmlProps}>
+    <button type={type} className={`${className} ${props.className}`} style={style} {...htmlProps}>
       {text}
     </button>
   );

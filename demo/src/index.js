@@ -17,7 +17,7 @@ const Views = {
 };
 
 class Demo extends Component {
-  state = { view: 'BasicExample' };
+  state = { view: 'FieldTypeExample' };
 
   show = ev => {
     this.setState({ view: ev.target.dataset.name });

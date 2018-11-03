@@ -168,7 +168,41 @@ function FileUpload(props: any) {
   )
 }
 
-const EzField = (props: any) => {
+interface EzFieldProps {
+  controlCss?: any
+  labelCss?: any
+  toggleCss?: any
+  fileCss?: any
+  errorCss?: any
+  label?: string|any // TODO: use correct type string|JSX
+  placeholder?: string
+  name?: string
+  // --- field types:
+  password?: string|boolean
+  number?: string|boolean
+  date?: string|boolean
+  time?: string|boolean
+  range?: string|boolean
+  radio?: string|boolean
+  radios?: string|boolean
+  checkbox?: string|boolean
+  checkboxes?: string|boolean
+  select?: string|boolean
+  options?: any[]
+  toggle?: string|boolean
+  inline?: string|boolean
+  textarea?: string|boolean
+  file?: string|boolean
+  withPreview?: string|boolean
+  // --- handlers:
+  value?: any
+  onChange?: (val: any) => void
+  validate?: any // TODO: use correct type
+  children?: any
+  formik?: any
+}
+
+const EzField = (props: EzFieldProps) => {
   const { label, placeholder, fieldName } = getChildrenParts(props)
   const labelText = label || toPascalCase(fieldName);
 
@@ -202,6 +236,13 @@ const EzField = (props: any) => {
     {labelText}
   </label>
 
+  const commonProps: any = {
+    label: labelText,
+    name: fieldName,
+    value: props.value,
+    onChange: props.onChange
+  }
+
   const moreProps: any = {}
   if (props.textarea) {
     moreProps.component = 'textarea'
@@ -209,39 +250,28 @@ const EzField = (props: any) => {
   if (props.select) {
     moreProps.component = 'select'
   }
-  if (props.number) {
-    moreProps.type = 'number'
-  }
-  if (props.password) {
-    moreProps.type = 'password'
-  }
-  if (props.date) {
-    moreProps.type = 'date'
-  }
-  if (props.time) {
-    moreProps.type = 'time'
-  }
-  if (props.range) {
-    moreProps.type = 'range'
-  }
+  ['number', 'password', 'date', 'time', 'range'].map(type => {
+    if (props.hasOwnProperty(type)) {
+      moreProps.type = type; // HTML5 input types
+    }
+  })
   return (
     <div className={classes.group}>
       {props.toggle ? (
         <React.Fragment>
           <Label />
-          <EzToggle name={fieldName} value={props.value} onChange={props.onChange}
-            className={props.inline ? `${toggleClass}-inline` : toggleClass} />
+          <EzToggle {...commonProps} className={props.inline ? `${toggleClass}-inline` : toggleClass} />
         </React.Fragment>
       ) : props.file ? (
         <React.Fragment>
           <Label />
-          <FileUpload label={labelText} name={fieldName} value={props.value} onChange={props.onChange}
+          <FileUpload {...commonProps}
             withPreview={props.withPreview} className={`${fileClass} ${hasErrors ? classes.invalidControl : ''}`} />
         </React.Fragment>
       ) : props.checkbox ? (
-        <Checkbox label={labelText} name={fieldName} value={props.value} onChange={props.onChange} />
+        <Checkbox {...commonProps} />
       ) : props.radio ? (
-        <Radio label={labelText} name={fieldName} value={props.value} onChange={props.onChange} />
+        <Radio {...commonProps} />
       ) : (props.radios && props.options) ? (
         <React.Fragment>
           <Label />

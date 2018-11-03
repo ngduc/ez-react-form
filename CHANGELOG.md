@@ -1,4 +1,4 @@
-## [0.6.10] - 2018-11-01
+## [0.6.11] - 2018-11-01
 
 ### Added
 - more field types: textarea, number, password, file, date, time, range
@@ -8,6 +8,7 @@
 
 ### Changed
 - BREAKING: renamed "bootstrap" to "bootstrap4"
+- use props instead of shorthand syntax in examples
 
 ## [0.4.2] - 2018-10-30
 

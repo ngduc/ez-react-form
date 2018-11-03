@@ -24,7 +24,17 @@ const getClasses = (use: string) => {
   return defaults;
 };
 
-const EzForm = (props: any) => {
+interface IEzFormProps {
+  use?: 'bootstrap3' | 'bootstrap4' | 'spectre' | 'semanticui2',
+  horizontal?: string|boolean,
+  css?: any, // TODO: define interface for "css"
+  className?: string,
+  disabled?: string|boolean,
+  children?: any,
+  formik?: any; // FormikContext<{}>
+}
+
+const EzForm = (props: IEzFormProps) => {
   const classes = getClasses(props.use);
 
   props.formik.ezUse = props.use; // bootstrap, spectre, etc.
