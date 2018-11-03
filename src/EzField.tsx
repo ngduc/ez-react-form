@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect, Field, FastField } from 'formik';
 import Toggle from 'react-toggle';
-import { getChildrenParts, isOptionArray } from './Utils'
+import { getChildrenParts, isOptionArray, toPascalCase } from './Utils'
 
 const getClasses = (use: string, isHorizontal: boolean) => {
   const defaults = {
@@ -169,11 +169,8 @@ function FileUpload(props: any) {
 }
 
 const EzField = (props: any) => {
-  if (!props.children) {
-    throw 'EzField is being used incorrectly: missing props.children';
-    return null;
-  }
   const { label, placeholder, fieldName } = getChildrenParts(props)
+  const labelText = label || toPascalCase(fieldName);
 
   const errors = props.formik.errors;
   const hasErrors =
@@ -202,7 +199,7 @@ const EzField = (props: any) => {
     options = props.options.map((opt: any) => <option key={opt.value} value={opt.value}>{opt.label}</option>)
   }
   const Label = () => <label htmlFor={fieldName} className={labelClass}>
-    {label}
+    {labelText}
   </label>
 
   const moreProps: any = {}
@@ -238,13 +235,13 @@ const EzField = (props: any) => {
       ) : props.file ? (
         <React.Fragment>
           <Label />
-          <FileUpload label={label} name={fieldName} value={props.value} onChange={props.onChange}
+          <FileUpload label={labelText} name={fieldName} value={props.value} onChange={props.onChange}
             withPreview={props.withPreview} className={`${fileClass} ${hasErrors ? classes.invalidControl : ''}`} />
         </React.Fragment>
       ) : props.checkbox ? (
-        <Checkbox label={label} name={fieldName} value={props.value} onChange={props.onChange} />
+        <Checkbox label={labelText} name={fieldName} value={props.value} onChange={props.onChange} />
       ) : props.radio ? (
-        <Radio label={label} name={fieldName} value={props.value} onChange={props.onChange} />
+        <Radio label={labelText} name={fieldName} value={props.value} onChange={props.onChange} />
       ) : (props.radios && props.options) ? (
         <React.Fragment>
           <Label />
