@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect, Field, FastField } from 'formik';
 import Toggle from 'react-toggle';
-import { getChildrenParts, isOptionArray, toPascalCase } from './Utils'
+import { cn, getChildrenParts, isOptionArray, toPascalCase, } from './Utils'
 
 const getClasses = (use: string, isHorizontal: boolean) => {
   const defaults = {
@@ -169,6 +169,7 @@ function FileUpload(props: any) {
 }
 
 interface EzFieldProps {
+  className?: string
   controlCss?: any
   labelCss?: any
   toggleCss?: any
@@ -217,16 +218,16 @@ const EzField = (props: EzFieldProps) => {
   const labelClass = labelCss ? `${classes.label} ${labelCss}` : classes.label
 
   const controlCss = css.control || props.controlCss || ''
-  const controlClass = controlCss ? `${classes.control} ${controlCss}` : classes.control
+  const controlClass = cn(classes.control, controlCss)
 
   const toggleCss = css.toggle || props.toggleCss || ''
-  const toggleClass = toggleCss ? `${classes.toggle} ${toggleCss}` : classes.toggle
+  const toggleClass =  cn(classes.toggle, toggleCss)
 
   const fileCss = css.file || props.fileCss || ''
-  const fileClass = fileCss ? `${classes.toggle} ${fileCss}` : classes.file
+  const fileClass = cn(classes.file, fileCss)
 
   const errorCss = css.error || props.errorCss || ''
-  const errorClass = errorCss ? `${classes.error} ${errorCss}` : classes.error
+  const errorClass = cn(classes.error, errorCss)
 
   let options = null
   if (isOptionArray(props.options)) {
@@ -235,6 +236,11 @@ const EzField = (props: EzFieldProps) => {
   const Label = () => <label htmlFor={fieldName} className={labelClass}>
     {labelText}
   </label>
+
+  const clonedProps = {
+    ...props,
+    // className: '' // don't pass props.className to children
+  }
 
   const commonProps: any = {
     label: labelText,
@@ -256,7 +262,7 @@ const EzField = (props: EzFieldProps) => {
     }
   })
   return (
-    <div className={classes.group}>
+    <div className={classes.group + cn(props.className)}>
       {props.toggle ? (
         <React.Fragment>
           <Label />
@@ -298,9 +304,9 @@ const EzField = (props: EzFieldProps) => {
             placeholder={placeholder}
             onChange={(val: any) => { props.formik.handleChange(val); props.onChange && props.onChange(val); }}
             validate={props.validate}
-            className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`}
-            {...(typeof props.children !== 'string' ? props : {})}
+            {...(typeof props.children !== 'string' ? clonedProps : {})}
             {...moreProps}
+            className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`}
           >{options}</FastField>
         </React.Fragment>
       )}

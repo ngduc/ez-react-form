@@ -1,9 +1,9 @@
-## [0.6.11] - 2018-11-01
+## [0.6.15] - 2018-11-01
 
 ### Added
 - more field types: textarea, number, password, file, date, time, range
 - Toggle & inline toggle
-- FieldTypeExample
+- FieldTypeExample, LayoutExample
 - Semantic UI 2
 
 ### Changed

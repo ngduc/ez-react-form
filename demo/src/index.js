@@ -7,17 +7,18 @@ import '../../lib/css/bootstrap4.css';
 // import '../../lib/css/spectre.css';
 // import '../../lib/css/semanticui2.css';
 import '../../lib/css/styles.css'; // default Theme
-import { BasicExample, DynamicFormExample, EventHandlerExample, FieldTypeExample } from '../../lib';
+import { BasicExample, DynamicFormExample, EventHandlerExample, FieldTypeExample, LayoutExample } from '../../lib';
 
 const Views = {
   BasicExample,
   FieldTypeExample,
   DynamicFormExample,
-  EventHandlerExample
+  EventHandlerExample,
+  LayoutExample
 };
 
 class Demo extends Component {
-  state = { view: 'FieldTypeExample' };
+  state = { view: 'BasicExample' };
 
   show = ev => {
     this.setState({ view: ev.target.dataset.name });

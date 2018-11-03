@@ -6,6 +6,7 @@ import BasicExample from './examples/BasicExample';
 import DynamicFormExample from './examples/DynamicFormExample';
 import EventHandlerExample from './examples/EventHandlerExample';
 import FieldTypeExample from './examples/FieldTypeExample';
+import LayoutExample from './examples/LayoutExample';
 
 module.exports = {
   FormContainer: EzFormContainer,
@@ -19,5 +20,6 @@ module.exports = {
   BasicExample,
   DynamicFormExample,
   EventHandlerExample,
-  FieldTypeExample
+  FieldTypeExample,
+  LayoutExample
 };

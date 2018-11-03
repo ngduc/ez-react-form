@@ -22,6 +22,15 @@ export function log (name: string) {
   }
 }
 
+// cn(props.className, more.className ...)
+export function cn (...items: string[]) {
+  let classNameStr = ''
+  for (let i = 0; i < items.length; i += 1) {
+    classNameStr += (items[i] ? ' ' + items[i] : '')
+  }
+  return classNameStr
+}
+
 export function clone (obj: any) {
   if (!obj) {
     return null
