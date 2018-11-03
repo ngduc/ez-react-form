@@ -1,4 +1,4 @@
-## [0.6.8] - 2018-11-01
+## [0.6.9] - 2018-11-01
 
 ### Added
 - more field types: textarea, number, password, file, date, time, range

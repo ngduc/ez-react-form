@@ -16,7 +16,7 @@ import { FormContainer, Form, Field, Button } from 'ez-react-form';
 <FormContainer onSubmit={this.onSubmit} render={props => (
   <Form use="bootstrap4">
     <Field label="Text" name="text" />
-    <Field label="Password" name="password" />
+    <Field name="password" />
     <Field textarea name="textarea" />
     <Field select options={animals} name="select" />
     <Field radios options={genders} name="radio" />
