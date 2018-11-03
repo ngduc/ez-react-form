@@ -10,8 +10,6 @@ Easy React Form - ez-react-form
 
 [![Screenshot](screenshot-compare.png)](../src/examples/BasicExample.tsx)
 
-- Shorthand syntax `<Field>Label | Placeholder | name</Field>` (yes, child is a string for convenience, props work too but it's up to you) generates more code for you. (inspired by [Styled Component](https://github.com/styled-components/styled-components) literal string for CSS)
-
 Not just shorter syntax, it's also offering:
 - Describe Forms naturally.
 - Consistent rendering, stylings (good for big projects).
@@ -19,6 +17,7 @@ Not just shorter syntax, it's also offering:
 - Work with different CSS Frameworks / Form Layouts (tentcss (default), bootstrap, spectre, etc.)
 - More types of fields.
 - Work well together with Formik - use FastField to avoid [too many re-renders](https://twitter.com/jaredpalmer/status/962114095481851910?lang=en)
+- Shorthand syntax `<Field>Label | Placeholder | name</Field>`. Inspired by [Styled Component](https://github.com/styled-components/styled-components) literal string for CSS.
 
 ### 📦 Usage
 
