@@ -4,7 +4,7 @@
 
 A simple way to work with Forms in React.
 
-- Live Demo: [Codesandbox](https://codesandbox.io/s/l5vxk5o7vq)
+- Live Demo: [Codesandbox](https://codesandbox.io/s/on50k50wy)
 - Code examples: [Link](../src/examples)
 
 ### 🌟 Features
@@ -37,9 +37,9 @@ import { FormContainer, Form, Field, Button } from 'ez-react-form';
 
 Result: (Full form, validation (with yup) & error messages)
 
-[![Screenshot](screenshot-types.png)](https://codesandbox.io/s/l5vxk5o7vq)
+[![Screenshot](screenshot-types.png)](https://codesandbox.io/s/on50k50wy)
 
-- Render different `form layouts`: Bootstrap 4, Semantic UI, Spectre and more. (including horizontal layout)
+- Render different `form layouts`: Bootstrap 4, Semantic UI, Spectre and more. (including horizontal layout, inline fields)
 - Compatible with `formik`. This is built on top of formik and can be used together with it (for custom fields, etc.)
 - Support popular and advanced field types.
 - Works well on mobile screens.

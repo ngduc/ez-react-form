@@ -22,7 +22,7 @@ export function log (name: string) {
   }
 }
 
-// cn(props.className, more.className ...)
+// combine class names - cn(props.className, more.className ...)
 export function cn (...items: string[]) {
   let classNameStr = ''
   for (let i = 0; i < items.length; i += 1) {
@@ -38,6 +38,8 @@ export function clone (obj: any) {
   return JSON.parse(JSON.stringify(obj));
 }
 
+// for shorthand syntax, extract { label, placeholder, name } from children string
+// example: <Field>label | placeholder | name</Field>
 export const getChildrenParts = (props: any) => {
   let children = props.children
   const isJSXString = Array.isArray(props.children) && children.join('').indexOf('|') >= 0
@@ -95,6 +97,9 @@ export function deleteProperties(data: any, properties: string[]) {
 }
 
 export function toPascalCase (s: string) {
+  if (!s) {
+    return ''
+  }
   return s.replace(/\w+/g, function(w) {
     return w[0].toUpperCase() + w.slice(1).toLowerCase();
   });

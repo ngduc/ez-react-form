@@ -25,7 +25,7 @@ const getClasses = (use: string) => {
 };
 
 interface IEzFormProps {
-  use?: 'bootstrap3' | 'bootstrap4' | 'spectre' | 'semanticui2',
+  use?: '' | 'bootstrap3' | 'bootstrap4' | 'spectre' | 'semanticui2',
   horizontal?: string|boolean,
   css?: any, // TODO: define interface for "css"
   className?: string,

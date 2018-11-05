@@ -10,6 +10,7 @@ const getClasses = (use: string, isHorizontal: boolean) => {
     control: 'ez-field',
     file: 'ez-field',
     toggle: 'ez-toggle',
+    row: 'ez-row',
     invalidControl: 'ez-field-error',
     error: 'ez-error'
   };
@@ -168,17 +169,35 @@ function FileUpload(props: any) {
   )
 }
 
+function Row(props: any) {
+  function renderChildren() {
+    return React.Children.map(props.children, (child: any) => {
+      return React.cloneElement(child, {
+        className: "col-md-6"
+      })
+    })
+  }
+
+  return (
+    <div className="form-row">
+      {renderChildren()}
+    </div>
+  )
+}
+
 interface EzFieldProps {
   className?: string
-  controlCss?: any
-  labelCss?: any
-  toggleCss?: any
-  fileCss?: any
-  errorCss?: any
+  controlCss?: string
+  labelCss?: string
+  toggleCss?: string
+  fileCss?: string
+  rowCss?: string
+  errorCss?: string
   label?: string|any // TODO: use correct type string|JSX
   placeholder?: string
   name?: string
   // --- field types:
+  row?: string|boolean
   password?: string|boolean
   number?: string|boolean
   date?: string|boolean
@@ -226,6 +245,9 @@ const EzField = (props: EzFieldProps) => {
   const fileCss = css.file || props.fileCss || ''
   const fileClass = cn(classes.file, fileCss)
 
+  const rowCss = css.row || props.rowCss || ''
+  const rowClass = cn(classes.row, rowCss)
+
   const errorCss = css.error || props.errorCss || ''
   const errorClass = cn(classes.error, errorCss)
 
@@ -263,7 +285,11 @@ const EzField = (props: EzFieldProps) => {
   })
   return (
     <div className={classes.group + cn(props.className)}>
-      {props.toggle ? (
+      {props.row ? (
+        <Row {...commonProps} className={rowClass}>
+          {props.children}
+        </Row>
+      ) : props.toggle ? (
         <React.Fragment>
           <Label />
           <EzToggle {...commonProps} className={props.inline ? `${toggleClass}-inline` : toggleClass} />

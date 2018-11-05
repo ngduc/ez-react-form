@@ -4,7 +4,7 @@
 
 Easy React Form - ez-react-form
 
-- Live Demo: [Codesandbox](https://codesandbox.io/s/l5vxk5o7vq)
+- Live Demo: [Codesandbox](https://codesandbox.io/s/on50k50wy)
 
 ### 🌟 Features
 
@@ -38,7 +38,7 @@ import { FormContainer, Form, Field, Button } from 'ez-react-form';
 ```
 - To avoid conflicts, you can also use `import { EzFormContainer, EzForm, EzField, EzButton }`
 - Full code example: [Link](../src/examples/BasicExample.tsx)
-- Live example: [Codesandbox](https://codesandbox.io/s/l5vxk5o7vq)
+- Live example: [Codesandbox](https://codesandbox.io/s/on50k50wy)
 
 Result:
 
