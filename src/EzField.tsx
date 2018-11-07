@@ -8,30 +8,35 @@ const getClasses = (use: string, isHorizontal: boolean) => {
     group: '',
     label: 'ez-label',
     control: 'ez-field',
+    row: 'ez-row',
     file: 'ez-field',
     toggle: 'ez-toggle',
-    row: 'ez-row',
     invalidControl: 'ez-field-error',
-    error: 'ez-error'
+    error: 'ez-error',
+    help: 'ez-help'
   };
   if (use === 'bootstrap3' || use === 'bootstrap4') {
     defaults.group = 'form-group' + (isHorizontal ? ' row' : '');
     defaults.control = 'form-control';
+    defaults.row = 'form-row';
     defaults.file = 'ez-field ez-bootstrap-file';
     defaults.toggle = 'ez-bootstrap-toggle'; // custom css for bootstrap
     defaults.invalidControl = 'is-invalid';
     defaults.error = 'invalid-feedback';
+    defaults.help = 'form-text text-muted';
   }
   if (use === 'spectre') {
     defaults.group = 'form-group';
-    defaults.label = 'form-label';
+    defaults.label = 'form-label form-inline';
     defaults.control = 'form-input';
+    defaults.row = 'input-group';
     // defaults.toggle = 'ez-spectre-toggle'; // no need yet
     defaults.invalidControl = 'is-error';
     defaults.error = 'form-input-hint';
   }
   if (use === 'semanticui2') {
     defaults.group = isHorizontal ? 'field inline' : 'field';
+    defaults.row = 'equal width fields';
     defaults.file = 'ez-field ez-semanticui2-file';
     defaults.toggle = 'ez-semanticui2-toggle';
   }
@@ -179,7 +184,7 @@ function Row(props: any) {
   }
 
   return (
-    <div className="form-row">
+    <div className={props.className}>
       {renderChildren()}
     </div>
   )
@@ -193,9 +198,11 @@ interface EzFieldProps {
   fileCss?: string
   rowCss?: string
   errorCss?: string
+  helpCss?: string
   label?: string|any // TODO: use correct type string|JSX
   placeholder?: string
   name?: string
+  help?: string|any
   // --- field types:
   row?: string|boolean
   password?: string|boolean
@@ -250,6 +257,9 @@ const EzField = (props: EzFieldProps) => {
 
   const errorCss = css.error || props.errorCss || ''
   const errorClass = cn(classes.error, errorCss)
+
+  const helpCss = css.help || props.helpCss || ''
+  const helpClass = cn(classes.help, helpCss)
 
   let options = null
   if (isOptionArray(props.options)) {
@@ -334,6 +344,7 @@ const EzField = (props: EzFieldProps) => {
             {...moreProps}
             className={`${controlClass} ${hasErrors ? classes.invalidControl : ''}`}
           >{options}</FastField>
+          <small className={helpClass}>{props.help}</small>
         </React.Fragment>
       )}
       {hasErrors && <span className={errorClass}>{errors[fieldName]}</span>}

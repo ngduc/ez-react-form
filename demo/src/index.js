@@ -30,7 +30,7 @@ class Demo extends Component {
       <div style={{ width: '70%' }}>
         <h1>Demo</h1>
 
-        <nav>
+        <nav style={{ marginBottom: 10 }}>
           {Object.keys(Views).map(v => {
             return (
               <a href="javascript:;" data-name={v} onClick={this.show} style={{ marginRight: 20 }}>
